@@ -14,7 +14,8 @@ fs.readFile("test-file.txt", () => {
   setTimeout(() => console.log("Timer 3 finished"), 3000);
   setImmediate(() => console.log("Immediate 2 finished"));
   process.nextTick(() => console.log("Process.NextTick"));
-
+  
+  // Synchronous Code
   crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
   console.log(Date.now() - start, "Password encrypted");
 
@@ -26,6 +27,26 @@ fs.readFile("test-file.txt", () => {
 
   crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
   console.log(Date.now() - start, "Password encrypted");
+  
+  // Asynchronoud code
+  /*
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - startTime, "Password encrypted");
+  });
+
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - startTime, "Password encrypted");
+  });
+
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - startTime, "Password encrypted");
+  });
+
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - startTime, "Password encrypted");
+  });
+  
+  */
 });
 
 console.log("Hello from the top-level code");
