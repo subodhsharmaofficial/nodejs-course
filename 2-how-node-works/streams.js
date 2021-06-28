@@ -8,7 +8,7 @@ server.on("request", (req, res) => {
   //     res.end(data);
   //   });
 
-  //Solution 2: Streams
+  //---------Solution 2: Streams---------------
   //   const readable = fs.createReadStream("test-file.txt");
   //   readable.on("data", (chunk) => {
   //     res.write(chunk);
@@ -22,10 +22,10 @@ server.on("request", (req, res) => {
   //     res.end("File not found");
   //   });
 
-  // Solution 3
+  //-----------Solution 3---------------------
   const readable = fs.createReadStream("test-file.txt");
   readable.pipe(res);
-  //
+  
 });
 
 server.listen(8000, "127.0.0.1", () => {
